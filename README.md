@@ -1,78 +1,53 @@
-<<<<<<< HEAD
-# CEPROCAMP
-Modernização da plataforma digital do Centro Profissionalizante de Campinas
-=======
-# React + TypeScript + Vite
+# 🎓 Portal Institucional CEPROCAMP & CMS Integrado
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Modernização da plataforma digital do Centro Profissionalizante de Campinas (CEPROCAMP / FUMEC), unindo um portal público informativo a um painel administrativo (CMS) completo para gestão de cursos, notícias e conteúdos institucionais.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📌 Visão Geral
 
-## React Compiler
+O projeto foi concebido para atender às demandas de comunicação pública da instituição educacional, oferecendo uma experiência fluida, acessível e responsiva para alunos e cidadãos, além de uma interface de administração independente para a equipe pedagógica.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Principais Funcionalidades
 
-## Expanding the ESLint configuration
+* **Arquitetura SPA Reativa:** Navegação desacoplada baseada em estados sem dependências de roteamento externas complexas, com controle de histórico, restauração automática de scroll e sincronização entre seções.
+* **Catálogo Dinâmico de Cursos:** Apresentação de cursos técnicos e de qualificação profissional com filtros por modalidade e modal com detalhes acadêmicos (duração, carga horária, mercado e requisitos).
+* **Mural de Notícias & Carrossel Híbrido:**
+  * Carrossel de destaques no topo com suporte nativo a gestos de toque no mobile (*touch swipe*).
+  * Grade completa de publicações com resumos (`line-clamp`) e **Modal de Leitura Completa**.
+  * Controle direto de "Destaque" configurável pelo administrador.
+* **Painel Administrativo Completo (CMS):**
+  * Gerenciamento de seções institucionais da Home (Boas-vindas, PEPI, Contatos).
+  * CRUD completo de notícias com suporte a upload de imagens (Base64) e links externos.
+  * Sessão administrativa persistente, permitindo alternar livremente entre o painel de gestão e a visualização do portal público sem perda de login.
+  * Monitor de status de conexão com o back-end.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tecnologias Utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **Front-End:** [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+* **Build Tool:** [Vite](https://vitejs.dev/)
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+* **Gerenciamento de Estado:** React Context API + Custom Hooks (*Lifting State Up*)
+* **Persistência Temporária:** Browser `localStorage` (com fallback para mock tipado)
+* **Back-End (Em Integração):** Node.js / Express hospedado no [Render](https://render.com/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Estrutura de Pastas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
->>>>>>> 0c3607b (Upgrade: Primeiro repositório)
+```text
+src/
+├── assets/          # Ícones, vetores e imagens estáticas
+├── components/      # Componentes reutilizáveis
+│   ├── admin/       # Módulos de gestão (GerenciarNoticias, GerenciarHome, etc.)
+│   ├── info/        # Seções de detalhes (SecaoCursos, SecaoMatriz, etc.)
+│   └── layout/      # Componentes estruturais (Header, Footer, ScrollToTop)
+├── context/         # ContentContext (estado global institucional)
+├── data/            # Dados mockados e estruturas padrão de inicialização
+├── services/        # Camada de comunicação com API e autenticação
+├── types/           # Interfaces e tipos estritos do TypeScript
+├── views/           # Páginas principais da aplicação (Home, Info, Noticias, Sobre, Login, Admin)
+├── App.tsx          # Orquestrador de telas e transições
+└── main.tsx         # Ponto de entrada do React DOM
