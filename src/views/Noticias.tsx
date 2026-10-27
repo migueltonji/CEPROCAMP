@@ -7,7 +7,7 @@ const STORAGE_NOTICIAS = 'ceprocamp_posts_noticias'
 
 export default function Noticias() {
   const [noticiaAberta, setNoticiaAberta] = useState<NoticiaPost | null>(null)
-  const [posts, setPosts] = useState<NoticiaPost[]>(() => {
+  const [posts] = useState<NoticiaPost[]>(() => {
     const salvos = localStorage.getItem(STORAGE_NOTICIAS)
     if (salvos) {
       try {
@@ -296,85 +296,89 @@ export default function Noticias() {
           ))}
         </div>
         {/* MODAL / POP-UP DE LEITURA COMPLETA */}
-      {noticiaAberta && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs animate-in fade-in duration-200"
-          onClick={() => setNoticiaAberta(null)}
-        >
-          <div 
-            className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col border border-slate-200 animate-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
+        {noticiaAberta && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs animate-in fade-in duration-200"
+            onClick={() => setNoticiaAberta(null)}
           >
-            {/* Topo com Categoria e Botão Fechar */}
-            <div className="p-5 border-b border-slate-100 flex justify-between items-center sticky top-0 bg-white/95 backdrop-blur-md z-10">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-500" />
-                <span className="px-2.5 py-0.5 rounded bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wide">
-                  {noticiaAberta.categoria || 'Geral'}
-                </span>
-                <span className="text-xs text-slate-400 font-medium">
-                  {noticiaAberta.dataPublicacao}
-                </span>
-              </div>
-              <button 
-                onClick={() => setNoticiaAberta(null)} 
-                className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer text-sm font-bold"
-                aria-label="Fechar modal"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Corpo da Matéria */}
-            <div className="p-6 md:p-8 space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-snug">
-                {noticiaAberta.titulo}
-              </h2>
-
-              {noticiaAberta.imagemUrl && (
-                <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-950/5 max-h-[380px]">
-                  <img
-                    src={noticiaAberta.imagemUrl}
-                    alt={noticiaAberta.titulo}
-                    className="w-full h-full object-cover"
-                  />
+            <div
+              className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col border border-slate-200 animate-in zoom-in-95 duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Topo com Categoria e Botão Fechar */}
+              <div className="p-5 border-b border-slate-100 flex justify-between items-center sticky top-0 bg-white/95 backdrop-blur-md z-10">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-500" />
+                  <span className="px-2.5 py-0.5 rounded bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wide">
+                    {noticiaAberta.categoria || 'Geral'}
+                  </span>
+                  <span className="text-xs text-slate-400 font-medium">
+                    {noticiaAberta.dataPublicacao}
+                  </span>
                 </div>
-              )}
-
-              <div className="text-base text-slate-700 leading-relaxed font-normal whitespace-pre-line space-y-4">
-                {noticiaAberta.conteudo}
+                <button
+                  onClick={() => setNoticiaAberta(null)}
+                  className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer text-sm font-bold"
+                  aria-label="Fechar modal"
+                >
+                  ✕
+                </button>
               </div>
 
-              {noticiaAberta.linkExterno?.url && (
-                <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-bold text-blue-900 uppercase">Documento / Link Oficial</p>
-                    <p className="text-xs text-blue-700 font-mono truncate">{noticiaAberta.linkExterno.url}</p>
+              {/* Corpo da Matéria */}
+              <div className="p-6 md:p-8 space-y-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-snug">
+                  {noticiaAberta.titulo}
+                </h2>
+
+                {noticiaAberta.imagemUrl && (
+                  <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-950/5 max-h-[380px]">
+                    <img
+                      src={noticiaAberta.imagemUrl}
+                      alt={noticiaAberta.titulo}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <a
-                    href={noticiaAberta.linkExterno.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors shrink-0"
-                  >
-                    {noticiaAberta.linkExterno.texto || 'Acessar Link'} ↗
-                  </a>
-                </div>
-              )}
-            </div>
+                )}
 
-            {/* Rodapé do Modal */}
-            <div className="p-4 border-t border-slate-100 bg-slate-50 flex justify-end sticky bottom-0">
-              <button 
-                onClick={() => setNoticiaAberta(null)} 
-                className="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
-              >
-                Fechar
-              </button>
+                <div className="text-base text-slate-700 leading-relaxed font-normal whitespace-pre-line space-y-4">
+                  {noticiaAberta.conteudo}
+                </div>
+
+                {noticiaAberta.linkExterno?.url && (
+                  <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-bold text-blue-900 uppercase">
+                        Documento / Link Oficial
+                      </p>
+                      <p className="text-xs text-blue-700 font-mono truncate">
+                        {noticiaAberta.linkExterno.url}
+                      </p>
+                    </div>
+                    <a
+                      href={noticiaAberta.linkExterno.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors shrink-0"
+                    >
+                      {noticiaAberta.linkExterno.texto || 'Acessar Link'} ↗
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              {/* Rodapé do Modal */}
+              <div className="p-4 border-t border-slate-100 bg-slate-50 flex justify-end sticky bottom-0">
+                <button
+                  onClick={() => setNoticiaAberta(null)}
+                  className="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                >
+                  Fechar
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </section>
     </main>
   )

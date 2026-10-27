@@ -6,7 +6,7 @@ export default function GerenciarHome() {
 
   // Estados locais para edição sem interferir antes de salvar
   const [instForm, setInstForm] = useState(conteudo.home.institucional)
-  const [cursosForm, setCursosForm] = useState(conteudo.home.cursosIntro)
+  const [cursosForm] = useState(conteudo.home.cursosIntro)
   const [pepiForm, setPepiForm] = useState(conteudo.home.pepi)
   const [notificacao, setNotificacao] = useState('')
 
