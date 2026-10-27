@@ -266,7 +266,7 @@ export default function Noticias() {
                       rel="noopener noreferrer"
                       className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center gap-1.5"
                     >
-                      🔗 {post.linkExterno.texto || 'Ver detalhes'}
+                      {post.linkExterno.texto || 'Ver detalhes'}
                     </a>
                   </div>
                 )}
@@ -277,7 +277,7 @@ export default function Noticias() {
                     onClick={() => setNoticiaAberta(post)}
                     className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors cursor-pointer inline-flex items-center gap-1"
                   >
-                    Ler publicação completa →
+                    Ler publicação completa
                   </button>
 
                   {post.linkExterno?.url && (
@@ -287,7 +287,7 @@ export default function Noticias() {
                       rel="noopener noreferrer"
                       className="text-xs text-slate-500 hover:text-blue-700"
                     >
-                      🔗 {post.linkExterno.texto || 'Link'}
+                      {post.linkExterno.texto || 'Link'}
                     </a>
                   )}
                 </div>
@@ -320,9 +320,7 @@ export default function Noticias() {
                   onClick={() => setNoticiaAberta(null)}
                   className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer text-sm font-bold"
                   aria-label="Fechar modal"
-                >
-                  ✕
-                </button>
+                ></button>
               </div>
 
               {/* Corpo da Matéria */}
