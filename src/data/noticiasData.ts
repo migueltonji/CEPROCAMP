@@ -1,0 +1,68 @@
+// src/data/noticiasData.ts
+import type { NoticiaPost } from '../types/noticias'
+
+export const NOTICIAS_PADRAO: NoticiaPost[] = [
+  {
+    id: 'post-1',
+    titulo: 'Inscrições abertas para novos Cursos Técnicos e de Qualificação',
+    conteudo: 'A FUMEC abre o período de inscrições para as turmas do próximo semestre. São centenas de vagas gratuitas em polos descentralizados por toda a cidade de Campinas.',
+    categoria: 'Editais',
+    destaque: true,
+    imagemUrl: '/imgs/carrossel/inovationWeek_ceprocamp.webp',
+    linkExterno: {
+      texto: 'Acessar Edital Oficial',
+      url: 'https://fumec.sp.gov.br',
+    },
+    dataPublicacao: '20/10/2026',
+    criadoEm: Date.now() - 1000 * 60 * 60 * 12,
+  },
+  {
+    id: 'post-2',
+    titulo: 'Alunos de Tecnologia e Gestão apresentam projetos na Semana de Inovação',
+    conteudo: 'Feira acadêmica reuniu soluções práticas voltadas à modernização de serviços públicos municipais desenvolvidas por estudantes do CEPROCAMP Centro.',
+    categoria: 'Eventos',
+    destaque: true,
+    imagemUrl: '/imgs/carrossel/auditorio_ceprocamp.webp',
+    dataPublicacao: '18/10/2026',
+    criadoEm: Date.now() - 1000 * 60 * 60 * 36,
+  },
+  {
+    id: 'post-3',
+    titulo: 'Parceria com empresas locais amplia vagas de estágio via PEPI',
+    conteudo: 'Novos convênios firmados com indústrias e empresas de logística da Região Metropolitana de Campinas abrem portas para colocação direta no mercado de trabalho.',
+    categoria: 'Avisos',
+    destaque: true,
+    imagemUrl: '/imgs/carrossel/gestao_ceprocamp.webp',
+    dataPublicacao: '15/10/2026',
+    criadoEm: Date.now() - 1000 * 60 * 60 * 72,
+  },
+  {
+    id: 'post-4',
+    titulo: 'Workshop de Confeitaria e Padaria Artesanal capacita comunidade',
+    conteudo: 'Aulas práticas realizadas na cozinha-escola capacitam novos microempreendedores no setor alimentício com foco em geração rápida de renda.',
+    categoria: 'Geral',
+    destaque: false,
+    imagemUrl: '/imgs/carrossel/padaria_ceprocamp.webp',
+    dataPublicacao: '12/10/2026',
+    criadoEm: Date.now() - 1000 * 60 * 60 * 120,
+  },
+  {
+    id: 'post-5',
+    titulo: 'Simulado de Segurança do Trabalho e Prevenção de Riscos',
+    conteudo: 'Turmas do Curso Técnico em TST realizaram simulação de evacuação e análise de riscos ambientais com apoio do corpo docente e convidados técnicos.',
+    categoria: 'Eventos',
+    destaque: false,
+    imagemUrl: '/imgs/carrossel/TST_ceprocamp.webp',
+    dataPublicacao: '08/10/2026',
+    criadoEm: Date.now() - 1000 * 60 * 60 * 180,
+  },
+  {
+    id: 'post-6',
+    titulo: 'Horários e orientações para emissão do passe escolar gratuito',
+    conteudo: 'Estudantes matriculados nos cursos técnicos presenciais já podem solicitar a declaração escolar na secretaria da sua respectiva unidade.',
+    categoria: 'Avisos',
+    destaque: false,
+    dataPublicacao: '05/10/2026',
+    criadoEm: Date.now() - 1000 * 60 * 60 * 240,
+  },
+]

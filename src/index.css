@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* 1. Importa a Archivo Black e a Archivo Narrow direto do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&display=swap');
+
+@theme {
+  /* 2. Substitui a fonte padrão do Tailwind (sans) pela Archivo Narrow */
+  --font-sans: 'Archivo Narrow', ui-sans-serif, system-ui, sans-serif;
+  
+  /* 3. Cria uma classe nova exclusiva para a Archivo Black (usaremos font-titulo) */
+  --font-titulo: 'Archivo Black', ui-sans-serif, system-ui, sans-serif;
+}
