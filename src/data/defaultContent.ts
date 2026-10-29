@@ -32,8 +32,8 @@ export const DEFAULT_SITE_CONTENT: SiteContentSchema = {
         'Suporte especializado focado na abertura do próprio negócio para alunos que desejam empreender.',
       chamadaEmpresas:
         'Você é empresário ou representante de empresa? Se precisa divulgar vagas de emprego ou estágio e recrutar nossos talentos, entre em contato diretamente com o nosso setor responsável:',
-      videoPoster: '/public/capa_PEPI_ceprocamp.webp',
-      videoUrl: '/public/VideoPepi_ceprocamp.webm',
+      videoPoster: '/capa_PEPI_ceprocamp.webp',
+      videoUrl: '/VideoPepi_ceprocamp.webm',
       whatsappLink: 'https://wa.me/5519999605872',
       emailContato: 'pepi.ceprocamp@educa.fumec.sp.gov.br',
     },
