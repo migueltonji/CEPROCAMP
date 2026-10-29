@@ -49,24 +49,32 @@ const initMockData = () => {
 }
 
 initMockData()
-
+const AUTH_KEY = 'ceprocamp_auth_token'
 export const apiService = {
-  // Autenticação (Aqui o Bruno validará o Token JWT)
-  login: async (
-    email: string,
-    pass: string,
-  ): Promise<{ token: string; user: { name: string } }> => {
-    // Simulação temporária de autenticação
-    if (email === 'admin@educa.fumec.sp.gov.br' && pass === 'admin123') {
-      const token = 'mock_jwt_token_ceprocamp'
-      localStorage.setItem('auth_token', token)
-      return { token, user: { name: 'Administrador FUMEC' } }
+  login: async (usuario: string, senha: string): Promise<boolean> => {
+    const adminEmail = import.meta.env.VITE_ADMIN_EMAIL
+    const adminSenha = import.meta.env.VITE_ADMIN_PASSWORD
+
+    // Valida sem expor os valores no código-fonte
+    if (
+      adminEmail &&
+      adminSenha &&
+      usuario === adminEmail &&
+      senha === adminSenha
+    ) {
+      localStorage.setItem(AUTH_KEY, 'sessao_admin_ativa')
+      return true
     }
-    throw new Error('Credenciais inválidas.')
+
+    return false
+  },
+
+  isAutenticado: (): boolean => {
+    return localStorage.getItem(AUTH_KEY) === 'sessao_admin_ativa'
   },
 
   logout: () => {
-    localStorage.removeItem('auth_token')
+    localStorage.removeItem(AUTH_KEY)
   },
 
   // CARROSSEL
@@ -92,6 +100,4 @@ export const apiService = {
   saveUnidades: async (unidades: UnidadeItem[]): Promise<void> => {
     localStorage.setItem('admin_unidades', JSON.stringify(unidades))
   },
-
-  
 }
